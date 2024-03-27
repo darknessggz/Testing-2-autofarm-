@@ -1,0 +1,311 @@
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/darknessggz/AutoFarm-My-Supermarket/main/My%20supermarket%20Autofarm"))()
+
+wait(0.4)
+game.StarterGui:SetCore("SendNotification", {
+	Title = "My Resturant Autofarm";
+	Text = "Your script has been executed";
+	Duration = 5; -- Adjust duration as needed (in seconds)
+})
+
+wait(1)
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local _4buttonwork = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local HEADING = Instance.new("TextLabel")
+local button3 = Instance.new("TextButton")
+local button4 = Instance.new("TextButton")
+local text1 = Instance.new("TextLabel")
+local text2 = Instance.new("TextLabel")
+local text3 = Instance.new("TextLabel")
+local text4 = Instance.new("TextLabel")
+local button1 = Instance.new("TextButton")
+local button2 = Instance.new("TextButton")
+local Credit = Instance.new("TextLabel")
+local button5 = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+--Properties:
+
+_4buttonwork.Name = "4 button work"
+_4buttonwork.Parent = game.CoreGui
+_4buttonwork.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = _4buttonwork
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.BorderColor3 = Color3.fromRGB(0, 168, 239)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.400879294, 0, 0.225159615, 0)
+main.Size = UDim2.new(0, 185, 0, 199)
+main.Active = true
+main.Draggable = true
+
+HEADING.Name = "HEADING"
+HEADING.Parent = main
+HEADING.BackgroundColor3 = Color3.fromRGB(0, 179, 255)
+HEADING.BorderColor3 = Color3.fromRGB(0, 0, 0)
+HEADING.BorderSizePixel = 0
+HEADING.Position = UDim2.new(0, 0, 3.13966865e-07, 0)
+HEADING.Size = UDim2.new(0, 185, 0, 31)
+HEADING.Font = Enum.Font.FredokaOne
+HEADING.Text = "My Supermarket"
+HEADING.TextColor3 = Color3.fromRGB(255, 255, 255)
+HEADING.TextSize = 23.000
+HEADING.TextWrapped = true
+
+button3.Name = "button3"
+button3.Parent = main
+button3.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+button3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button3.BorderSizePixel = 0
+button3.Position = UDim2.new(0.511470973, 0, 0.529978991, 0)
+button3.Size = UDim2.new(0, 57, 0, 23)
+button3.Font = Enum.Font.SourceSans
+button3.TextColor3 = Color3.fromRGB(0, 0, 0)
+button3.TextSize = 14.000
+button3.Text = "OFF"
+
+local isToggled = false
+
+	button3.MouseButton1Click:Connect(function()
+		isToggled = not isToggled
+		if isToggled then
+		button3.Text = "ON"
+		button3.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		--print("Button clicked, isToggled:", isToggled)
+		while isToggled do
+			--print("Inside loop")
+			local part = game:GetService("Workspace").Moon.HelpPoints.BuildAreaPoints.BuildBlocks.BlockPark_1_66_5.BlockModel
+			humanoid.RootPart.CFrame = part.CFrame
+			--print("Moved to part1")
+			wait(0.3)
+			local args = {[1] = 6}
+			game:GetService("ReplicatedStorage"):WaitForChild("Scene"):WaitForChild("SceneManager"):WaitForChild("PlayerTake"):FireServer(unpack(args))
+			--print("Fired PlayerTake")
+			wait(0.3)
+			local part2 = game:GetService("Workspace").Moon.HelpPoints.BuildAreaPoints.BuildBlocks.BlockPark_1_58_5.BlockModel
+			humanoid.RootPart.CFrame = part2.CFrame
+			--print("Moved to part2")
+			wait(0.3)
+			local args = {[1] = 5}
+			game:GetService("ReplicatedStorage"):WaitForChild("Scene"):WaitForChild("SceneManager"):WaitForChild("PlayerReturn"):FireServer(unpack(args))
+			--print("Fired PlayerReturn")
+			wait(0.3)
+		end
+		print("Loop ended")
+	else
+		button3.Text = "OFF"
+		button3.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red color
+		--print("Button clicked, isToggled:", isToggled)
+	end
+	end)
+
+button4.Name = "button4"
+button4.Parent = main
+button4.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+button4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button4.BorderSizePixel = 0
+button4.Position = UDim2.new(0.511470973, 0, 0.725150585, 0)
+button4.Size = UDim2.new(0, 57, 0, 23)
+button4.Font = Enum.Font.SourceSans
+button4.TextColor3 = Color3.fromRGB(0, 0, 0)
+button4.TextSize = 14.000
+button4.Text = "OFF"
+
+local isToggled = false
+
+button4.MouseButton1Click:Connect(function()
+	isToggled = not isToggled
+	if isToggled then
+		button4.Text = "ON"
+		button4.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		--print("Button clicked, isToggled:", isToggled)
+		-- Your existing loop code here
+	else
+		humanoid.WalkSpeed = 16 
+		button4.Text = "OFF"
+		button4.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		--print("Button clicked, isToggled:", isToggled)
+		-- Code to stop the loop if needed
+	end
+end)
+
+button4.MouseButton1Click:Connect(function()
+	-- Set the character's walk speed to 50
+	humanoid.WalkSpeed = 50
+	--print("Button 4 clicked, walk speed set to 50")
+end)
+
+text1.Name = "text1"
+text1.Parent = main
+text1.BackgroundColor3 = Color3.fromRGB(163, 163, 163)
+text1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+text1.BorderSizePixel = 0
+text1.Position = UDim2.new(0.0516037382, 0, 0.186615899, 0)
+text1.Size = UDim2.new(0, 68, 0, 23)
+text1.Font = Enum.Font.FredokaOne
+text1.TextColor3 = Color3.fromRGB(0, 0, 0)
+text1.TextSize = 14.000
+text1.Text = "Restock"
+
+text2.Name = "text2"
+text2.Parent = main
+text2.BackgroundColor3 = Color3.fromRGB(163, 163, 163)
+text2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+text2.BorderSizePixel = 0
+text2.Position = UDim2.new(0.0516037382, 0, 0.353295863, 0)
+text2.Size = UDim2.new(0, 68, 0, 23)
+text2.Font = Enum.Font.FredokaOne
+text2.TextColor3 = Color3.fromRGB(0, 0, 0)
+text2.TextSize = 14.000
+text2.Text = "Cart 1🛒"
+
+text3.Name = "text3"
+text3.Parent = main
+text3.BackgroundColor3 = Color3.fromRGB(163, 163, 163)
+text3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+text3.BorderSizePixel = 0
+text3.Position = UDim2.new(0.0516037382, 0, 0.529978991, 0)
+text3.Size = UDim2.new(0, 68, 0, 23)
+text3.Font = Enum.Font.FredokaOne
+text3.TextColor3 = Color3.fromRGB(0, 0, 0)
+text3.TextSize = 14.000
+text3.Text = "Cart 2🛒"
+
+text4.Name = "text4"
+text4.Parent = main
+text4.BackgroundColor3 = Color3.fromRGB(163, 163, 163)
+text4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+text4.BorderSizePixel = 0
+text4.Position = UDim2.new(0.0516037382, 0, 0.725150585, 0)
+text4.Size = UDim2.new(0, 68, 0, 23)
+text4.Font = Enum.Font.FredokaOne
+text4.TextColor3 = Color3.fromRGB(0, 0, 0)
+text4.TextSize = 14.000
+text4.Text = "Walk speed"
+
+button1.Name = "button1"
+button1.Parent = main
+button1.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+button1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button1.BorderSizePixel = 0
+button1.Position = UDim2.new(0.511470973, 0, 0.18731612, 0)
+button1.Size = UDim2.new(0, 57, 0, 22)
+button1.Font = Enum.Font.SourceSans
+button1.TextColor3 = Color3.fromRGB(0, 0, 0)
+button1.TextSize = 14.000
+button1.Text = "OFF"
+
+local toggle = false  -- Variable to keep track of the toggle state
+
+local function toggleButton()
+	toggle = not toggle  -- Toggle the state
+
+	if toggle then
+		button1.Text = "ON"
+		button1.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Change color to green
+		while toggle do
+			for i = 1, 500 do
+				local args = {
+					[1] = 10000 + i
+				}
+
+				game:GetService("ReplicatedStorage"):WaitForChild("Scene"):WaitForChild("SceneManager"):WaitForChild("PlayerUse"):FireServer(unpack(args))
+			end
+			wait(1)
+		end
+	else
+		button1.Text = "OFF"
+		button1.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Change color to red
+	end
+end
+
+button1.MouseButton1Click:Connect(toggleButton)
+
+button2.Name = "button2"
+button2.Parent = main
+button2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+button2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button2.BorderSizePixel = 0
+button2.Position = UDim2.new(0.511470973, 0, 0.353295863, 0)
+button2.Size = UDim2.new(0, 57, 0, 23)
+button2.Font = Enum.Font.SourceSans
+button2.TextColor3 = Color3.fromRGB(0, 0, 0)
+button2.TextSize = 14.000
+button2.Text = "OFF"
+
+local isToggled = false
+
+	button2.MouseButton1Click:Connect(function()
+		isToggled = not isToggled
+		if isToggled then
+		button2.Text = "ON"
+		button2.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+		print("Button clicked, isToggled:", isToggled)
+		while isToggled do
+			print("Inside loop")
+			local part = game:GetService("Workspace").Moon.HelpPoints.BuildAreaPoints.BuildBlocks.BlockPark_1_46_5.BlockModel
+			humanoid.RootPart.CFrame = part.CFrame
+			print("Moved to part1")
+			wait(0.3)
+			local args = {[1] = 4}
+			game:GetService("ReplicatedStorage"):WaitForChild("Scene"):WaitForChild("SceneManager"):WaitForChild("PlayerTake"):FireServer(unpack(args))
+			print("Fired PlayerTake")
+			wait(0.3)
+			local part2 = game:GetService("Workspace").Moon.HelpPoints.BuildAreaPoints.BuildBlocks.BlockPark_1_36_5.BlockModel
+			humanoid.RootPart.CFrame = part2.CFrame
+			print("Moved to part2")
+			wait(0.3)
+			local args = {[1] = 3}
+			game:GetService("ReplicatedStorage"):WaitForChild("Scene"):WaitForChild("SceneManager"):WaitForChild("PlayerReturn"):FireServer(unpack(args))
+			print("Fired PlayerReturn")
+			wait(0.3)
+		end
+		print("Loop ended")
+	else
+		button2.Text = "OFF"
+		button2.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red color
+		print("Button clicked, isToggled:", isToggled)
+	end
+	end)
+
+Credit.Name = "Credit"
+Credit.Parent = main
+Credit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Credit.BackgroundTransparency = 1.000
+Credit.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Credit.BorderSizePixel = 0
+Credit.Position = UDim2.new(0.116540529, 0, 0.882958233, 0)
+Credit.Size = UDim2.new(0, 140, 0, 27)
+Credit.Font = Enum.Font.FredokaOne
+Credit.Text = "@kitty_shinchu"
+Credit.TextColor3 = Color3.fromRGB(0, 0, 0)
+Credit.TextSize = 17.000
+Credit.TextWrapped = true
+
+button5.Name = "button5"
+button5.Parent = main
+button5.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
+button5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+button5.BorderSizePixel = 0
+button5.Position = UDim2.new(0.867892206, 0, 0.19248724, 0)
+button5.Size = UDim2.new(0, 19, 0, 19)
+button5.Font = Enum.Font.FredokaOne
+button5.Text = "?"
+button5.TextColor3 = Color3.fromRGB(0, 0, 0)
+button5.TextSize = 14.000
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = button5
+
+-- notification for ?
+button5.MouseButton1Click:Connect(function()
+	-- Send a notification when button5 is clicked
+	game.StarterGui:SetCore("SendNotification", {
+		Title = "RESTOCK";
+		Text = "You need to go near the stalls to fill, once start filling go away from the stall";
+		Duration = 5; -- Adjust duration as needed (in seconds)
+	})
+end)
